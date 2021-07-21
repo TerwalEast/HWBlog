@@ -14,6 +14,7 @@
     from label
     where id = #{id,jdbcType=INTEGER}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from label
     where id = #{id,jdbcType=INTEGER}
@@ -49,4 +50,10 @@
     set `text` = #{text,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--Custom-->
+  <select id="getIdByName" resultType="java.lang.Integer">
+    select id from label where text = #{name,jdbcType=VARCHAR}
+  </select>
+
 </mapper>

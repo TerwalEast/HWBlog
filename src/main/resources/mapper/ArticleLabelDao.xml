@@ -15,6 +15,9 @@
     from article_label
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from article_label
     where id = #{id,jdbcType=INTEGER}
@@ -60,4 +63,11 @@
       label_id = #{labelId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--Custom-->
+  <select id="getArticleIdsByLabelId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select article_id from article_label where label_id = #{labelId,jdbcType=INTEGER}
+  </select>
+
+
 </mapper>

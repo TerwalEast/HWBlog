@@ -14,4 +14,9 @@ public interface LabelDao {
     int updateByPrimaryKeySelective(Label record);
 
     int updateByPrimaryKey(Label record);
+
+    //自定义开始
+
+    int getIdByName(String name);
+
 }

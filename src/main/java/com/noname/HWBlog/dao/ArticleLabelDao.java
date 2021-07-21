@@ -2,6 +2,8 @@ package com.noname.HWBlog.dao;
 
 import com.noname.HWBlog.model.ArticleLabel;
 
+import java.util.List;
+
 public interface ArticleLabelDao {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,10 @@ public interface ArticleLabelDao {
     int updateByPrimaryKeySelective(ArticleLabel record);
 
     int updateByPrimaryKey(ArticleLabel record);
+
+    //Custom starts from here
+
+    List<Integer> getArticleIdsByLabelId(Integer labelId);//从LabelID获取所有有这个Label的文章ID。
+
+
 }
