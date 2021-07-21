@@ -131,7 +131,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="getAllUser">
+  <select id="getAllUser" resultType="com.noname.HWBlog.model.User">
     select * from user
   </select>
 
