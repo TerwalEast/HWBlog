@@ -8,8 +8,6 @@ import org.apache.ibatis.annotations.Param;
 public interface ArticleDao {
     long countByExample(ArticleExample example);
 
-    int deleteByExample(ArticleExample example);
-
     int deleteByPrimaryKey(Integer id);
 
     int insert(Article record);
@@ -43,7 +41,7 @@ public interface ArticleDao {
     void deleteArticleById(@Param("deleteId") Integer id);//删除文章，等于deleteByPrimaryKey()
 
     void editArticle(@Param("editId")Integer id,@Param("updateArticle") Article article);//修改文章
-    public Integer getArticleCount();
+    Integer getArticleCount();
 
 
 

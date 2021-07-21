@@ -10,6 +10,17 @@ import lombok.Data;
  */
 @Data
 public class Article implements Serializable {
+
+    public Article(Integer userId,String title,String text,Date date)
+    {
+        this.userId = userId;
+        this.title = title;
+        this.text = text;
+        this.state = 0;
+        this.createTime = date;
+        this.modifyTime = date;
+    }
+
     private Integer id;
 
     private Integer userId;
@@ -25,4 +36,24 @@ public class Article implements Serializable {
     private Byte state;
 
     private static final long serialVersionUID = 1L;
+
+    public Date getModifyTime() {
+        return modifyTime;
+    }
+
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setState(Byte state) {
+        this.state = state;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 }

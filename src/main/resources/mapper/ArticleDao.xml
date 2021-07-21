@@ -103,12 +103,6 @@
     delete from article
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.noname.HWBlog.model.ArticleExample">
-    delete from article
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
   <delete id="deleteArticleById">
     delete from article where id = #{deleteId};
   </delete>
