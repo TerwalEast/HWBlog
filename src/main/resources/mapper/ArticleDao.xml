@@ -242,4 +242,13 @@
       `state` = #{state,jdbcType=TINYINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!-- 自定义的查询-->
+
+
+
+
+
+
+
 </mapper>

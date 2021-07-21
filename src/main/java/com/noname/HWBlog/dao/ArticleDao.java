@@ -27,4 +27,12 @@ public interface ArticleDao {
     int updateByPrimaryKeySelective(Article record);
 
     int updateByPrimaryKey(Article record);
+
+    //Custom here
+    List<Article> selectRecentArticles(Integer amount);
+
+    List<Article> selectByCategory(Integer categoryId);
+
+
+
 }

@@ -29,6 +29,11 @@ public class UserController {
         }
     }
 
+    @RequestMapping(value = "")
+    public String updateProfile()
+
+
+
 
 
 
