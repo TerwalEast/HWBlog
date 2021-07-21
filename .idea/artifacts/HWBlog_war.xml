@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="HWBlog:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>HWBlog</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="HWBlog-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="HWBlog:war exploded" />
+    </root>
+  </artifact>
+</component>
