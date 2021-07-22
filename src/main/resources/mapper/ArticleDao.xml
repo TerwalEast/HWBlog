@@ -258,18 +258,15 @@
     where id=#{id}
   </select>
 
-  <update id="editArticle">
+  <update id="updateArticle">
     update article
-    <set>
-      id=#{updateArticle.id},
-      title=#{updateArticle.title},
-      summary=#{updateArticle.summary},
-      content=#{updateArticle.content},
-      cid=#{updateArticle.cid},
-      uid=#{updateArticle.uid},
-      state=#{updateArticle.state}
-    </set>
-    where id=#{editId}
+    set user_id = #{userId,jdbcType=INTEGER},
+        title = #{title,jdbcType=VARCHAR},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        `text` = #{text,jdbcType=VARCHAR},
+        `state` = #{state,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="getArticleCount" resultType="int">
     SELECT count(*) FROM article
@@ -283,6 +280,9 @@
     select * from
     (select * from article order by modify_time desc)
     limit 0,#{amount}
+  </select>
+  <select id="getArticleByState" resultType="com.noname.HWBlog.model.Article">
+    select * from article where state = #{state_pa}
   </select>
 
 

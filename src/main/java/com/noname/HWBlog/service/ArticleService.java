@@ -54,6 +54,37 @@ public class ArticleService {
         articleDao.deleteArticleById(id);
     }
 
+    public List<Article> getArticleByAuthorId(Integer author_id)
+    {
+        List<Article> list = articleDao.getArticleByAuthorId(Long.valueOf(author_id));
+        return list;
+    }
+
+    public boolean updateArticle(Integer id, String title, String text, Byte state)
+    {
+        Article article = articleDao.getArticleById(id);
+        if(article == null)
+        {
+            return false;
+        }
+        article.setTitle(title);
+        article.setText(text);
+        article.setState(state);
+        Date date = new Date();
+        article.setModifyTime(date);
+        articleDao.updateArticle(article);
+        return true;
+    }
+
+    public List<Article> getAllArticles()
+    {
+        return articleDao.getAllArticle();
+    }
+
+    public void complicatedQuery()
+    {
+
+    }
 
 
 }

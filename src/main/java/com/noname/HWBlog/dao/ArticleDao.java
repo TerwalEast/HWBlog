@@ -40,10 +40,11 @@ public interface ArticleDao {
 
     void deleteArticleById(@Param("deleteId") Integer id);//删除文章，等于deleteByPrimaryKey()
 
-    void editArticle(@Param("editId")Integer id,@Param("updateArticle") Article article);//修改文章
     Integer getArticleCount();
 
+    List<Article> getArticleByState(Byte state_pa);
 
+    int updateArticle(Article record);
 
 
 }
