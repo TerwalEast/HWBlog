@@ -1,9 +1,9 @@
 package com.noname.HWBlog.service;
 
-import com.noname.HWBlog.dao.ArticleDao;
-import com.noname.HWBlog.dao.ArticleLabelDao;
-import com.noname.HWBlog.dao.LabelDao;
+import com.noname.HWBlog.dao.*;
 import com.noname.HWBlog.model.Article;
+import com.noname.HWBlog.model.Sub;
+import com.noname.HWBlog.model.User;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -18,6 +18,11 @@ public class ArticleService {
     LabelDao labelDao;
     @Resource
     ArticleLabelDao articleLabelDao;
+    @Resource
+    UserDao userDao;
+    @Resource
+    SubDao subDao;
+
 
     public Article getArticleById(int id)
     {
@@ -80,6 +85,55 @@ public class ArticleService {
     {
         return articleDao.getAllArticle();
     }
+
+    public List<Article> queryByAuthorNameString(String namePrompt)
+    {
+        List<Integer> idList = userDao.getUserIDsThatNameContainString(namePrompt);
+
+        if(idList.size() == 0)
+        {
+            return null;
+        }
+
+        List<Article> articleList = new LinkedList<Article>();
+
+        for(int i = 0; i < idList.size(); i++)
+        {
+            articleList.add(articleDao.getArticleById(idList.get(i)));
+        }
+        return articleList;
+    }
+
+    public void subArticle(User user, Article article)
+    {
+        Sub sub = subDao.getSub(user.getId(),article.getId());
+        if(sub != null)
+        {
+            subDao.enable(user.getId(),article.getId());
+        }
+        else
+        {
+            sub = new Sub();
+            sub.setArticleId(article.getId());
+            sub.setUserId(user.getId());
+            sub.setValid(true);
+        }
+    }
+
+    public void unsubArticle(User user, Article article)
+    {
+        Sub sub = subDao.getSub(user.getId(),article.getId());
+        if(sub != null)
+        {
+            subDao.disable(user.getId(),article.getId());
+        }
+        else
+        {
+            //Do nothing
+        }
+    }
+
+
 
     public void complicatedQuery()
     {

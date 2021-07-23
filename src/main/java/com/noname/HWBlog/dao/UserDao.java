@@ -20,4 +20,8 @@ public interface UserDao {
 
     List<User> getAllUser();
 
+    List<Integer> getUserIDsThatNameContainString(String query);
+
+
+
 }

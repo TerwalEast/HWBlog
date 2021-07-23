@@ -136,4 +136,14 @@
   </select>
 
 
+  <!--CUSTOM-->
+
+    <select id="getUserIDsThatNameContainString" resultType="java.lang.Integer">
+      select id from user where name like CONCAT('%',#{query},'%')
+    </select>
+
+
+
+
+
 </mapper>
